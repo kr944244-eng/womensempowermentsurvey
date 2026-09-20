@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="ta" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Women's Free Handicrafts Survey & Registration | Thulasi Trust × Women's Empowerment</title>
+  <meta name="description"
+    content="Thulasi Trust Thoothukudi — Free Handicrafts Training for all women. Register details, choose interested crafts, venue, days, and time. 100% Free classes & materials.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Noto Sans Tamil', 'system-ui', 'sans-serif'],
+            heading: ['Outfit', 'Noto Sans Tamil', 'sans-serif'],
+            tamil: ['Noto Sans Tamil', 'sans-serif']
+          },
+          colors: {
+            primary: {
+              50: '#fff1f3',
+              100: '#ffe4e8',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans, Outfit, Noto Sans Tamil -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --font-body: 'Plus Jakarta Sans', 'Noto Sans Tamil', sans-serif;
+      --font-heading: 'Outfit', 'Noto Sans Tamil', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: #fff6f8;
+      background-image:
+        radial-gradient(circle at 5% 15%, rgba(244, 63, 94, 0.12) 0%, transparent 35%),
+        radial-gradient(circle at 95% 20%, rgba(245, 158, 11, 0.14) 0%, transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(255, 228, 230, 0.5) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(219, 39, 119, 0.12) 0%, transparent 35%),
+        radial-gradient(circle at 10% 85%, rgba(249, 115, 22, 0.1) 0%, transparent 30%);
+      background-attachment: fixed;
+      color: #1e293b;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #881337 0%, #be123c 35%, #9d174d 70%, #d97706 100%);
+      position: relative;
+    }
+
+    /* Ambient animated glow blobs */
+    .glow-orb-1 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.3) 0%, rgba(244, 63, 94, 0) 70%);
+      filter: blur(50px);
+      top: -100px;
+      left: -100px;
+      pointer-events: none;
+      animation: floatSlow 12s ease-in-out infinite alternate;
+    }
+
+    .glow-orb-2 {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.25) 0%, rgba(251, 191, 36, 0) 70%);
+      filter: blur(60px);
+      top: 50%;
+      right: -120px;
+      pointer-events: none;
+      animation: floatSlow 15s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatSlow {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(40px, 60px) scale(1.1);
+      }
+    }
+
+    /* Traditional Kolam / Floral Watermark */
+    .kolam-pattern {
+      background-image: radial-gradient(#e11d48 0.75px, transparent 0.75px), radial-gradient(#d97706 0.75px, #fff6f8 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      opacity: 0.25;
+    }
+
+    /* Glassmorphic card styling */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(215, 45, 45, 0.9);
+      box-shadow: 0 20px 45px -15px rgba(225, 29, 72, 0.1), 0 0 1px 1px rgba(253, 224, 230, 0.6);
+    }
+
+    .craft-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .craft-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 30px -8px rgba(225, 29, 72, 0.2);
+    }
+
+    .step-dot {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.825rem;
+      font-weight: 800;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .form-step {
+      animation: fadeInStep 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInStep {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Selection options cards (Venues, Days, Times, Modes) */
+    .custom-option-card {
+      cursor: pointer;
+      border: 2px solid #fed7aa;
+      border-color: #fecdd3;
+      border-radius: 1.25rem;
+      background: #ffffff;
+      padding: 1.1rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .custom-option-card:hover {
+      border-color: #f43f5e;
+      background: #fff8f9;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(244, 63, 94, 0.12);
+    }
+
+    .custom-option-card:has(input:checked) {
+      border-color: #e11d48;
+      background: linear-gradient(135deg, #fff5f6, #ffffff);
+      box-shadow: 0 12px 25px -5px rgba(225, 29, 72, 0.2);
+      outline: 2px solid #fda4af;
+    }
+
+    .custom-option-card:has(input:checked) .card-indicator {
+      background-color: #e11d48;
+      color: white;
+      border-color: #e11d48;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 1rem;
+      font-size: 0.925rem;
+      transition: all 0.2s ease;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .form-input:focus {
+      border-color: #e11d48;
+      box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.12);
+      background: #ffffff;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-label .ta {
+      font-weight: 600;
+      color: #be123c;
+      font-size: 0.8rem;
+    }
+
+    .select-input {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23be123c' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1.15rem;
+      padding-right: 2.75rem !important;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #e11d48, #db2777);
+      color: white;
+      border: none;
+      border-radius: 1.15rem;
+      padding: 0.95rem 2.25rem;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 25px -4px rgba(225, 29, 72, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #be123c, #9d174d);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -4px rgba(225, 29, 72, 0.45);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #be123c;
+      border: 2px solid #fecdd3;
+      border-radius: 1.15rem;
+      padding: 0.85rem 1.75rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .btn-secondary:hover {
+      background: #fff1f2;
+      border-color: #e11d48;
+      transform: translateY(-1px);
+    }
+
+    @keyframes pulse-ring {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.5);
+      }
+
+      50% {
+        box-shadow: 0 0 0 12px rgba(225, 29, 72, 0);
+      }
+    }
+
+    .pulse-btn {
+      animation: pulse-ring 2.5s infinite;
+    }
+
+    @media print {
+      body {
+        background: white !important;
+      }
+
+      header,
+      footer,
+      #craft-gallery-section,
+      #survey-form-section,
+      .no-print {
+        display: none !important;
+      }
+
+      #thankyou-screen {
+        display: block !important;
+        padding: 0 !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased selection:bg-rose-500 selection:text-white relative">
+
+  <!-- Ambient Light Orbs -->
+  <div class="glow-orb-1"></div>
+  <div class="glow-orb-2"></div>
+
+  <!-- ======================================== -->
+  <!-- HEADER / NAVBAR                          -->
+  <!-- ======================================== -->
+  <header class="bg-white/90 backdrop-blur-lg border-b border-rose-100 sticky top-0 z-40 shadow-sm transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+
+      <!-- Left: Collaboration Logo & Title -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div
+          class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-700 via-rose-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-rose-200 group-hover:scale-105 transition-transform">
+          <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="text-base font-extrabold text-rose-950 flex items-center gap-1.5 leading-tight font-heading">
+            <span>Thulasi Trust</span>
+            <span class="text-rose-400 font-normal">×</span>
+            <span>Women's Empowerment</span>
+          </div>
+          <div class="text-[11px] font-semibold text-rose-700 flex items-center gap-1">
+            <span>தூலாசி அறக்கட்டளை</span>
+            <span>•</span>
+            <span>Thoothukudi, Tamil Nadu</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Center / Right: 100% Free Badge & Back Link -->
+      <div class="flex items-center gap-3">
+        <div
+          class="hidden md:flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-3.5 py-1.5 rounded-full text-xs font-extrabold shadow-sm">
+          <i data-lucide="gift" class="w-3.5 h-3.5"></i>
+          <span>100% Free Training / முற்றிலும் இலவசம்</span>
+        </div>
+
+        <a href="index.html"
+          class="inline-flex items-center gap-1.5 text-xs font-extrabold text-rose-800 hover:text-rose-950 transition px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Main Portal / முகப்பு</span>
+          <span class="sm:hidden">Home</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ======================================== -->
+  <!-- HERO BANNER                              -->
+  <!-- ======================================== -->
+  <section class="hero-gradient py-14 sm:py-20 text-white relative overflow-hidden shadow-2xl">
+    <!-- Traditional Floral Motif Accent -->
+    <div class="absolute inset-0 kolam-pattern"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-amber-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10 space-y-6">
+
+      <!-- Trust Collaboration Badge -->
+      <div
+        class="inline-flex items-center gap-2.5 bg-white/20 backdrop-blur-md border border-white/30 px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold text-rose-100 shadow-lg">
+        <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+        <span>Thulasi Trust Initiative • தூலாசி அறக்கட்டளை மகளிர் மேம்பாட்டுத் திட்டம்</span>
+      </div>
+
+      <!-- Main Heading Bilingual -->
+      <div class="space-y-2">
+        <h1
+          class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight font-heading drop-shadow-sm">
+          Free Handicraft Training For Women<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400">
+            பெண்களுக்கான இலவச கைவினைப் பயிற்சி
+          </span>
+        </h1>
+        <p class="text-base sm:text-lg text-rose-100 max-w-3xl mx-auto leading-relaxed pt-2">
+          Thulasi Trust, Thoothukudi invites all women artisans and homemakers to register their details and choose
+          their desired craft. <strong>All training classes, raw materials, and certificates are provided 100%
+            FREE!</strong>
+        </p>
+        <p class="text-sm sm:text-base text-amber-200 font-bold max-w-3xl mx-auto pt-1">
+          தூத்துக்குடி தூலாசி அறக்கட்டளை மூலம் அனைத்து மகளிருக்கும் இலவச கைவினைப் பயிற்சி, இலவச மூலப்பொருட்கள் மற்றும்
+          அரசு அங்கீகாரம் பெற்ற சான்றிதழ் வழங்கப்படுகிறது. கட்டணம் ஏதுமில்லை!
+        </p>
+      </div>
+
+      <!-- Three Guarantees: Zero Fee, Free Materials, Certificate -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto pt-3 text-left">
+        <div class="flex items-center gap-3 bg-white/15 backdrop-blur-md p-3.5 rounded-2xl border border-white/25">
+          <div
+            class="w-10 h-10 rounded-xl bg-emerald-500/80 flex items-center justify-center text-white font-black text-base flex-shrink-0">
+            ₹0
+          </div>
+          <div>
+            <div class="text-xs font-black text-white">100% Free For All</div>
+            <div class="text-[11px] text-amber-200 font-medium">கட்டணம் முற்றிலும் இலவசம்</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 bg-white/15 backdrop-blur-md p-3.5 rounded-2xl border border-white/25">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/80 flex items-center justify-center text-white flex-shrink-0">
+            <i data-lucide="package-check" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-xs font-black text-white">Free Starter Kit & Tools</div>
+            <div class="text-[11px] text-amber-200 font-medium">மூலப்பொருட்கள் இலவசம்</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 bg-white/15 backdrop-blur-md p-3.5 rounded-2xl border border-white/25">
+          <div class="w-10 h-10 rounded-xl bg-rose-500/80 flex items-center justify-center text-white flex-shrink-0">
+            <i data-lucide="award" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-xs font-black text-white">Govt & Trust Certificate</div>
+            <div class="text-[11px] text-amber-200 font-medium">பயிற்சி சான்றிதழ் உண்டு</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Reassurance Banner: Trust Will Help Whatever You Need -->
+      <div
+        class="max-w-3xl mx-auto bg-gradient-to-r from-white/20 via-white/25 to-white/20 backdrop-blur-lg p-4 rounded-2xl border border-white/30 text-left flex flex-col sm:flex-row items-center gap-3.5 shadow-lg">
+        <div
+          class="w-12 h-12 rounded-xl bg-amber-400 text-rose-950 flex items-center justify-center text-2xl flex-shrink-0 shadow-md">
+          🤝
+        </div>
+        <div class="flex-1 text-center sm:text-left">
+          <div class="text-sm font-black text-amber-200 uppercase tracking-wide">
+            Thulasi Trust Will Help Whatever You Need!
+          </div>
+          <div class="text-xs font-bold text-white mt-0.5">
+            உங்கள் தேவைகள் அனைத்திற்கும் தூலாசி அறக்கட்டளை துணை நிற்கும்!
+          </div>
+          <div class="text-[11px] text-rose-100 font-medium mt-1">
+            Free training, sewing machines, raw materials, bank loan guidance, and marketing support to sell your
+            finished products — tell us what you need in the form!
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a href="#survey-form-section"
+          class="inline-flex items-center gap-2.5 px-8 py-4 bg-white text-rose-800 font-extrabold text-sm sm:text-base rounded-2xl shadow-2xl hover:bg-rose-50 hover:scale-105 transition-all pulse-btn">
+          <i data-lucide="pencil-line" class="w-5 h-5 text-rose-600"></i>
+          <span>Register Free Now / இலவசமாக பதிவு செய்க</span>
+        </a>
+        <a href="#craft-gallery-section"
+          class="inline-flex items-center gap-2 px-6 py-4 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold text-sm rounded-2xl transition">
+          <i data-lucide="eye" class="w-4 h-4"></i>
+          <span>View 8 Free Crafts / பயிற்சிகளை பார்க்க</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================== -->
+  <!-- 1. CRAFT GALLERY SECTION                 -->
+  <!-- ======================================== -->
+  <section id="craft-gallery-section" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 space-y-8">
+
+    <div class="text-center space-y-2 max-w-3xl mx-auto">
+      <div
+        class="inline-flex items-center gap-2 bg-rose-100/80 border border-rose-300/80 px-4 py-1 rounded-full text-xs font-extrabold text-rose-800 shadow-sm">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-600"></i>
+        <span>Step 1: Choose Your Interested Handicraft / கைவினைத் தேர்வு</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-heading">
+        Explore 8 Free Handicrafts Classes
+      </h2>
+      <p class="text-sm sm:text-base text-slate-600">
+        Click any craft to select it. All classes are <strong>100% free with free raw materials</strong> provided by
+        Thulasi Trust. Your selection will auto-sync with your registration form below.
+      </p>
+      <p class="text-xs sm:text-sm font-bold text-rose-700">
+        ஆர்வமுள்ள கைவினைப் பயிற்சியை கிளிக் செய்து தேர்வு செய்யுங்கள் — கட்டணம் முற்றிலும் இலவசம்!
+      </p>
+    </div>
+
+    <!-- Craft Photo Cards Grid (8 Crafts rendered by JS) -->
+    <div id="craft-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Injected by ThulasiSurvey.renderCraftCards() -->
+    </div>
+
+    <!-- Selection Summary Sticky Badge -->
+    <div id="craft-selection-summary" class="hidden max-w-2xl mx-auto transition-all">
+      <div
+        class="flex items-center gap-3.5 p-4 sm:p-5 bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-300 rounded-3xl shadow-xl">
+        <div
+          class="w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center flex-shrink-0 text-base font-extrabold shadow-md">
+          <span id="craft-count">0</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="text-xs sm:text-sm font-extrabold text-emerald-900">
+            Selected Craft(s) / தேர்வு செய்யப்பட்டுள்ளது:
+          </div>
+          <div id="summary-names" class="text-xs font-semibold text-emerald-700 truncate mt-0.5"></div>
+        </div>
+        <a href="#survey-form-section"
+          class="flex-shrink-0 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold rounded-xl shadow-md transition">
+          Fill Form →
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================== -->
+  <!-- 2. MULTI-STEP SURVEY & REGISTRATION FORM -->
+  <!-- ======================================== -->
+  <section id="survey-form-section" class="max-w-4xl mx-auto px-4 sm:px-6 pb-20">
+
+    <div class="glass-card rounded-3xl overflow-hidden shadow-2xl border-2 border-rose-100">
+
+      <!-- Form Card Header -->
+      <div class="bg-gradient-to-r from-rose-800 via-rose-700 to-pink-700 px-6 sm:px-10 py-7 text-white relative">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <div
+              class="w-12 h-12 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center shadow-inner flex-shrink-0">
+              <i data-lucide="clipboard-check" class="w-6 h-6 text-white"></i>
+            </div>
+            <div>
+              <h2 class="text-xl sm:text-2xl font-extrabold font-heading">
+                Women's Registration Form
+              </h2>
+              <p class="text-xs text-rose-200 font-medium mt-0.5">
+                மகளிர் இலவச பயிற்சி பதிவு படிவம் — Thulasi Trust, Thoothukudi
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full text-xs font-extrabold text-amber-200 border border-white/30">
+            <span>✨ ₹0 Free / முற்றிலும் இலவசம்</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step Indicator Bar -->
+      <div class="px-6 sm:px-10 py-4 border-b border-rose-100 bg-rose-50/50">
+        <div class="flex items-center justify-between gap-2 max-w-lg mx-auto">
+
+          <div class="flex items-center gap-2">
+            <div class="step-dot bg-rose-600 text-white" data-step="1">1</div>
+            <span class="text-xs font-bold text-slate-700 hidden sm:inline">Details</span>
+          </div>
+          <div class="step-line flex-1 h-1.5 bg-rose-200 rounded-full transition-all" data-step="1"></div>
+
+          <div class="flex items-center gap-2">
+            <div class="step-dot bg-rose-200 text-rose-700" data-step="2">2</div>
+            <span class="text-xs font-bold text-slate-700 hidden sm:inline">Crafts</span>
+          </div>
+          <div class="step-line flex-1 h-1.5 bg-rose-200 rounded-full transition-all" data-step="2"></div>
+
+          <div class="flex items-center gap-2">
+            <div class="step-dot bg-rose-200 text-rose-700" data-step="3">3</div>
+            <span class="text-xs font-bold text-slate-700 hidden sm:inline">Venue & Time</span>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-2.5">
+          <span id="step-label"
+            class="text-xs sm:text-sm font-extrabold text-rose-800 bg-white px-3 py-0.5 rounded-full border border-rose-200 shadow-sm">
+            Step 1: Personal Details / தனிப்பட்ட விவரங்கள்
+          </span>
+        </div>
+      </div>
+
+      <!-- MAIN FORM -->
+      <form id="survey-form-thulasi" class="px-6 sm:px-10 py-8 space-y-8" novalidate>
+
+
+        <!-- ==================================================== -->
+        <!-- STEP 1: Personal & Location Details                  -->
+        <!-- ==================================================== -->
+        <div id="form-step-1" class="form-step space-y-6">
+
+          <div class="pb-3 border-b border-rose-100 flex items-center justify-between">
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-2">
+                <span
+                  class="w-7 h-7 rounded-lg bg-rose-600 text-white text-xs font-bold flex items-center justify-center">1</span>
+                <span>Personal & Location Details</span>
+              </h3>
+              <p class="text-xs text-rose-700 font-semibold mt-0.5">உங்கள் தனிப்பட்ட மற்றும் முகவரி விவரங்கள்</p>
+            </div>
+            <span class="text-[11px] text-slate-500 font-medium"><span class="text-rose-600 font-bold">*</span> Required
+              / அவசியம்</span>
+          </div>
+
+          <!-- Name, Age, Husband/Father Name, Phone -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+            <div>
+              <label class="form-label" for="f-name">
+                Full Name <span class="ta">/ உங்கள் முழுப் பெயர்</span> <span class="text-rose-500">*</span>
+              </label>
+              <input type="text" id="f-name" class="form-input" placeholder="e.g. S. Shenbagavalli" required
+                autocomplete="name">
+            </div>
+
+            <div>
+              <label class="form-label" for="f-age">
+                Age <span class="ta">/ வயது</span> <span class="text-rose-500">*</span>
+              </label>
+              <input type="number" id="f-age" class="form-input" placeholder="e.g. 28" min="16" max="85" required>
+            </div>
+
+            <div>
+              <label class="form-label" for="f-guardian">
+                Husband / Father / Guardian Name <span class="ta">/ கணவர் அல்லது தந்தை பெயர்</span>
+              </label>
+              <input type="text" id="f-guardian" class="form-input" placeholder="e.g. R. Murugesan">
+            </div>
+
+            <div>
+              <label class="form-label" for="f-phone">
+                WhatsApp / Mobile Number <span class="ta">/ செல்போன் எண்</span> <span class="text-rose-500">*</span>
+              </label>
+              <input type="tel" id="f-phone" class="form-input" placeholder="10-digit mobile number" maxlength="10"
+                pattern="[0-9]{10}" required autocomplete="tel">
+              <p class="text-[11px] text-slate-500 mt-1">Class schedule & updates will be sent via WhatsApp</p>
+            </div>
+
+            <div>
+              <label class="form-label" for="f-alt-phone">
+                Alternate Contact Number <span class="ta">/ மாற்று தொடர்பு எண்</span>
+                <span class="text-slate-400 font-normal">(Optional)</span>
+              </label>
+              <input type="tel" id="f-alt-phone" class="form-input" placeholder="Alternate phone" maxlength="10">
+            </div>
+
+            <div>
+              <label class="form-label" for="f-taluk">
+                Taluk / Block in Thoothukudi <span class="ta">/ வட்டம் / பகுதி</span> <span
+                  class="text-rose-500">*</span>
+              </label>
+              <select id="f-taluk" class="form-input select-input" required>
+                <option value="Thoothukudi">Thoothukudi (தூத்துக்குடி)</option>
+                <option value="Tiruchendur">Tiruchendur (திருச்செந்தூர்)</option>
+                <option value="Kovilpatti">Kovilpatti (கோவில்பட்டி)</option>
+                <option value="Vilathikulam">Vilathikulam (விளாத்திகுளம்)</option>
+                <option value="Ottapidaram">Ottapidaram (ஒட்டப்பிடாரம்)</option>
+                <option value="Sathankulam">Sathankulam (சாத்தான்குளம்)</option>
+                <option value="Srivaikuntam">Srivaikuntam (ஸ்ரீவைகுண்டம்)</option>
+                <option value="Eral">Eral (ஏரல்)</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Full Address & Village/Ward -->
+          <div class="space-y-4">
+            <div>
+              <label class="form-label" for="f-address">
+                Full Residential Address <span class="ta">/ முழு முகவரி (வீட்டு எண், தெரு)</span> <span
+                  class="text-rose-500">*</span>
+              </label>
+              <textarea id="f-address" class="form-input" rows="2" placeholder="e.g. Door No. 4/12, Kamaraj Street..."
+                required></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="form-label" for="f-village">
+                  Village / Ward / Area <span class="ta">/ ஊர் / வார்டு</span> <span class="text-rose-500">*</span>
+                </label>
+                <input type="text" id="f-village" class="form-input" placeholder="e.g. Muthiapuram, Ward 12" required>
+              </div>
+
+              <div>
+                <label class="form-label" for="f-district">
+                  District <span class="ta">/ மாவட்டம்</span>
+                </label>
+                <input type="text" id="f-district" class="form-input bg-slate-50" value="Thoothukudi" readonly>
+              </div>
+
+              <div>
+                <label class="form-label" for="f-pincode">
+                  Pincode <span class="ta">/ அஞ்சல் குறியீடு</span>
+                </label>
+                <input type="text" id="f-pincode" class="form-input" placeholder="e.g. 628001" maxlength="6">
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 1 Actions -->
+          <div class="flex justify-end pt-4 border-t border-rose-100">
+            <button type="button" class="btn-primary btn-next-step" data-from="1">
+              <span>Next: Choose Crafts / கைவினைத் தேர்வு</span>
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+        </div>
+
+
+        <!-- ==================================================== -->
+        <!-- STEP 2: Handicrafts Selection (100% Free - No Fees)   -->
+        <!-- ==================================================== -->
+        <div id="form-step-2" class="form-step hidden space-y-6">
+
+          <div class="pb-3 border-b border-rose-100 flex items-center justify-between">
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-2">
+                <span
+                  class="w-7 h-7 rounded-lg bg-rose-600 text-white text-xs font-bold flex items-center justify-center">2</span>
+                <span>Handicrafts Selection & Training Format</span>
+              </h3>
+              <p class="text-xs text-rose-700 font-semibold mt-0.5">
+                ஆர்வமுள்ள கைவினைத் தேர்வு மற்றும் பயிற்சி முறை (முற்றிலும் இலவசம்)
+              </p>
+            </div>
+            <span
+              class="inline-flex items-center gap-1 text-[11px] font-extrabold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+              ₹0 Free For All
+            </span>
+          </div>
+
+          <!-- Free Notice Banner -->
+          <div
+            class="bg-gradient-to-r from-rose-50 to-amber-50 border border-rose-200 p-4 rounded-2xl flex items-start gap-3">
+            <div
+              class="w-8 h-8 rounded-xl bg-rose-600 text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">
+              🎁
+            </div>
+            <div class="text-xs text-slate-700 leading-relaxed">
+              <strong class="text-rose-900">All Craft Classes are 100% Free / அனைத்து பயிற்சிகளும் இலவசம்!</strong>
+              <p class="mt-0.5">Thulasi Trust provides free raw material kits, expert mentor guidance, and certificates
+                to every registered woman. You can select more than one craft if interested.</p>
+            </div>
+          </div>
+
+          <!-- Craft Checkbox List (8 Crafts + Other) -->
+          <div>
+            <label class="form-label mb-3">
+              Which handicraft(s) would you like to learn? <span class="ta">/ நீங்கள் கற்க விரும்பும் கைவினைகள்?</span>
+              <span class="text-rose-500">*</span>
+            </label>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+
+              <!-- 1. Tailoring & Aari -->
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="interest-tailoring" value="tailoring"
+                  class="interest-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">🧵 Tailoring & Aari Embroidery</span>
+                    <span
+                      class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">FREE</span>
+                  </div>
+                  <div class="text-xs font-bold text-rose-700">தையல், பிளவுஸ் & ஆரி எம்பிராய்டரி</div>
+                  <div class="text-[11px] text-slate-500 mt-1">Blouses, kurtis, bridal aari patterns, machine stitching
+                    • Free kit provided</div>
+                </div>
+              </label>
+
+              <!-- 2. Beads Garland -->
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="interest-beads" value="beads"
+                  class="interest-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">📿 Beads Garland & Silk
+                      Jewellery</span>
+                    <span
+                      class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">FREE</span>
+                  </div>
+                  <div class="text-xs font-bold text-rose-700">கோவில் பாசி மாலை & பட்டு நூல் நகைகள்</div>
+                  <div class="text-[11px] text-slate-500 mt-1">Temple malas, wedding garlands, silk bangles • Free pearl
+                    kit provided</div>
+                </div>
+              </label>
+
+              <!-- 3. Terracotta Pottery -->
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="interest-pottery" value="pottery"
+                  class="interest-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">🏺 Terracotta Pottery & Clay
+                      Jewellery</span>
+                    <span
+                      class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">FREE</span>
+                  </div>
+                  <div class="text-xs font-bold text-rose-700">சுடுமண் கைவினை & டெரகோட்டா நகைகள்</div>
+                  <div class="text-[11px] text-slate-500 mt-1">Eco earrings, painted clay lamps, festival decor • Free
+                    clay & moulds</div>
+                </div>
+              </label>
+
+              <!-- 4. Scented Candles & Herbal Soaps -->
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="interest-candles" value="candles"
+                  class="interest-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">🕯️ Scented Candles & Herbal
+                      Soaps</span>
+                    <span
+                      class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">FREE</span>
+                  </div>
+                  <div class="text-xs font-bold text-rose-700">வாசனை மெழுகுவர்த்தி & மூலிகை சோப்</div>
+                  <div class="text-[11px] text-slate-500 mt-1">Aroma candles, neem & turmeric organic soap making • Free
+                    oils kit</div>
+                </div>
+              </label>
+
+              <!-- 5. Fabric Block Printing -->
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="interest-fabric" value="fabric"
+                  class="interest-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">🎨 Fabric Painting & Block
+                      Printing</span>
+                    <span
+                      class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">FREE</span>
+                  </div>
+                  <div class="text-xs font-bold text-rose-700">துணி ஓவியம் & மர அச்சு பிரிண்டிங்</div>
+                  <div class="text-[11px] text-slate-500 mt-1">Wooden block printing, saree designs, tie-dye art • Free
+                    dye colors</div>
+                </div>
+              </label>
+
+              <!-- 6. Jute & Palm Leaf -->
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="interest-jute" value="jute"
+                  class="interest-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">🧺 Jute Bags & Palm Leaf
+                      Crafts</span>
+                    <span
+                      class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">FREE</span>
+                  </div>
+                  <div class="text-xs font-bold text-rose-700">சணல் பைகள் & பனை ஓலை கைவினை</div>
+                  <div class="text-[11px] text-slate-500 mt-1">Eco-friendly bags, lunch bags, baskets, mats • Free
+                    natural fibers</div>
+                </div>
+              </label>
+
+              <!-- 7. Crochet & Macrame -->
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="interest-crochet" value="crochet"
+                  class="interest-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">🧶 Crochet & Macramé Art</span>
+                    <span
+                      class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">FREE</span>
+                  </div>
+                  <div class="text-xs font-bold text-rose-700">குரோஷே & மேக்ரமே கம்பளி பின்னல்</div>
+                  <div class="text-[11px] text-slate-500 mt-1">Woolen knitwear, bottle covers, boho wall art • Free
+                    crochet needles</div>
+                </div>
+              </label>
+
+              <!-- 8. Mushroom Cultivation -->
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="interest-mushroom" value="mushroom"
+                  class="interest-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">🍄 Oyster Mushroom Cultivation</span>
+                    <span
+                      class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">FREE</span>
+                  </div>
+                  <div class="text-xs font-bold text-rose-700">சிப்பி காளான் வளர்ப்பு & வீட்டு தோட்டம்</div>
+                  <div class="text-[11px] text-slate-500 mt-1">Home paddy straw method, 25-day quick harvest • Free
+                    spawns kit</div>
+                </div>
+              </label>
+
+            </div>
+
+            <!-- Other Custom Craft -->
+            <div class="mt-3.5 custom-option-card">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="interest-other" value="other"
+                  class="interest-checkbox mt-1 w-4 h-4 accent-rose-600">
+                <div class="flex-1">
+                  <div class="font-extrabold text-xs sm:text-sm text-slate-900">✨ Other Craft / வேறு ஏதாவது கைவினைப்
+                    பயிற்சி</div>
+                  <div class="text-xs text-rose-700 font-semibold">உங்களுக்கு விருப்பமான வேறு ஏதேனும் கலை இருந்தால்
+                    குறிப்பிடவும்:</div>
+                  <input type="text" id="f-other-interest" class="form-input mt-2 text-xs"
+                    placeholder="e.g. Paper quilling, Glass painting, Embroidery...">
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Training Format Selection (Offline / Online / Both) -->
+          <div class="pt-2">
+            <label class="form-label mb-3">
+              Preferred Training Mode <span class="ta">/ விருப்பமான பயிற்சி முறை</span> <span
+                class="text-rose-500">*</span>
+            </label>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+
+              <label class="custom-option-card flex flex-col items-center text-center">
+                <input type="radio" name="training-mode" value="Offline In-Person" class="sr-only" checked>
+                <span class="text-3xl mb-1.5">🏫</span>
+                <span class="font-extrabold text-sm text-slate-900">Offline In-Person</span>
+                <span class="text-xs font-bold text-rose-700">நேரடி வகுப்புகள்</span>
+                <span class="text-[11px] text-slate-500 mt-1">Hands-on practical training at class venue</span>
+              </label>
+
+              <label class="custom-option-card flex flex-col items-center text-center">
+                <input type="radio" name="training-mode" value="Online Live" class="sr-only">
+                <span class="text-3xl mb-1.5">📱</span>
+                <span class="font-extrabold text-sm text-slate-900">Online Live</span>
+                <span class="text-xs font-bold text-rose-700">ஆன்லைன் நேரடி வகுப்பு</span>
+                <span class="text-[11px] text-slate-500 mt-1">Live video sessions via WhatsApp & YouTube</span>
+              </label>
+
+              <label class="custom-option-card flex flex-col items-center text-center">
+                <input type="radio" name="training-mode" value="Flexible Both" class="sr-only">
+                <span class="text-3xl mb-1.5">🤝</span>
+                <span class="font-extrabold text-sm text-slate-900">Both / Flexible</span>
+                <span class="text-xs font-bold text-rose-700">இரண்டும் சரி</span>
+                <span class="text-[11px] text-slate-500 mt-1">Comfortable with both online & offline batches</span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- Step 2 Actions -->
+          <div class="flex justify-between pt-4 border-t border-rose-100">
+            <button type="button" class="btn-secondary btn-prev-step" data-from="2">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              <span>Back / பின்செல்</span>
+            </button>
+
+            <button type="button" class="btn-primary btn-next-step" data-from="2">
+              <span>Next: Venue, Days & Time / மையம் & நேரம்</span>
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+        </div>
+
+
+        <!-- ==================================================== -->
+        <!-- STEP 3: Venue, Days, Time & Additional Details       -->
+        <!-- ==================================================== -->
+        <div id="form-step-3" class="form-step hidden space-y-6">
+
+          <div class="pb-3 border-b border-rose-100 flex items-center justify-between">
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-2">
+                <span
+                  class="w-7 h-7 rounded-lg bg-rose-600 text-white text-xs font-bold flex items-center justify-center">3</span>
+                <span>Class Venue, Preferred Days & Time</span>
+              </h3>
+              <p class="text-xs text-rose-700 font-semibold mt-0.5">
+                பயிற்சி மையம், விருப்பமான நாட்கள் மற்றும் நேரத் தேர்வு
+              </p>
+            </div>
+            <span class="text-[11px] text-slate-500 font-medium"><span class="text-rose-600 font-bold">*</span> Required
+              / அவசியம்</span>
+          </div>
+
+          <!-- 1. VENUE OPTIONS -->
+          <div class="space-y-3">
+            <label class="form-label">
+              Choose Training Venue <span class="ta">/ பயிற்சி மையம் தேர்வு</span> <span class="text-rose-500">*</span>
+            </label>
+            <p class="text-xs text-slate-500 -mt-2">Select the most convenient training location for you across
+              Thoothukudi district:</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+
+              <label class="custom-option-card flex items-start gap-3">
+                <input type="radio" name="class-venue" value="Thulasi Trust Main Skill Center, Thoothukudi Town"
+                  class="accent-rose-600 mt-1" checked>
+                <div>
+                  <div class="font-extrabold text-xs sm:text-sm text-slate-900">🏢 Thulasi Trust Main Skill Center</div>
+                  <div class="text-xs font-bold text-rose-700">தூலாசி அறக்கட்டளை தலைமை மையம் (தூத்துக்குடி நகரம்)</div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">Near Old Bus Stand / Palayamkottai Road, Thoothukudi
+                  </div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3">
+                <input type="radio" name="class-venue" value="Community Training Hall, Kovilpatti"
+                  class="accent-rose-600 mt-1">
+                <div>
+                  <div class="font-extrabold text-xs sm:text-sm text-slate-900">🏫 Community Training Hall</div>
+                  <div class="text-xs font-bold text-rose-700">சமுதாய பயிற்சி மையம் (கோவில்பட்டி)</div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">Near Main Bazaar / Municipal Office, Kovilpatti</div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3">
+                <input type="radio" name="class-venue" value="SHG Women Community Hall, Tiruchendur"
+                  class="accent-rose-600 mt-1">
+                <div>
+                  <div class="font-extrabold text-xs sm:text-sm text-slate-900">🏛️ SHG Women Community Center</div>
+                  <div class="text-xs font-bold text-rose-700">மகளிர் சுய உதவிக்குழு மையம் (திருச்செந்தூர்)</div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">Near Taluk Office / Temple Bus Stand, Tiruchendur</div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3">
+                <input type="radio" name="class-venue" value="Panchayat Skill Hall, Vilathikulam & Ottapidaram"
+                  class="accent-rose-600 mt-1">
+                <div>
+                  <div class="font-extrabold text-xs sm:text-sm text-slate-900">🏡 Panchayat Skill Hall</div>
+                  <div class="text-xs font-bold text-rose-700">ஊராட்சி மன்ற திறன் மையம் (விளாத்திகுளம் / ஒட்டப்பிடாரம்)
+                  </div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">Village Panchayat Community Hall, Vilathikulam</div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3">
+                <input type="radio" name="class-venue" value="Nearest Local Ward / Village Center"
+                  class="accent-rose-600 mt-1">
+                <div>
+                  <div class="font-extrabold text-xs sm:text-sm text-slate-900">📍 Nearest Local Village / Ward Center
+                  </div>
+                  <div class="text-xs font-bold text-rose-700">உங்கள் ஊர் / வார்டுக்கு அருகிலுள்ள பயிற்சி மையம்</div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">Trust mentors will assign the closest hall to your
+                    address</div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3">
+                <input type="radio" name="class-venue" value="Home / Online Live Training" class="accent-rose-600 mt-1">
+                <div>
+                  <div class="font-extrabold text-xs sm:text-sm text-slate-900">💻 Home-Based / Online Class</div>
+                  <div class="text-xs font-bold text-rose-700">வீட்டிலிருந்தே பயில்கிறேன் (ஆன்லைன்)</div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">Live training videos sent directly to your WhatsApp
+                  </div>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- 2. CLASS DAYS OPTIONS -->
+          <div class="space-y-3 pt-2">
+            <label class="form-label">
+              Preferred Class Days <span class="ta">/ விருப்பமான பயிற்சி நாட்கள்</span> <span
+                class="text-rose-500">*</span>
+            </label>
+            <p class="text-xs text-slate-500 -mt-2">Choose which days of the week work best for your schedule:</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+
+              <label class="custom-option-card text-center flex flex-col items-center justify-center p-3.5">
+                <input type="radio" name="class-days" value="Weekday Batch (Mon to Fri)" class="accent-rose-600 mb-1.5"
+                  checked>
+                <span class="text-xl mb-1">📅</span>
+                <span class="font-extrabold text-xs text-slate-900">Weekday Batch</span>
+                <span class="text-[11px] font-bold text-rose-700">வார நாட்கள்</span>
+                <span class="text-[10px] text-slate-500 mt-0.5">Monday to Friday (திங்கள் – வெள்ளி)</span>
+              </label>
+
+              <label class="custom-option-card text-center flex flex-col items-center justify-center p-3.5">
+                <input type="radio" name="class-days" value="Weekend Batch (Sat & Sun)" class="accent-rose-600 mb-1.5">
+                <span class="text-xl mb-1">🏖️</span>
+                <span class="font-extrabold text-xs text-slate-900">Weekend Batch</span>
+                <span class="text-[11px] font-bold text-rose-700">வார இறுதி நாட்கள்</span>
+                <span class="text-[10px] text-slate-500 mt-0.5">Saturday & Sunday (சனி & ஞாயிறு)</span>
+              </label>
+
+              <label class="custom-option-card text-center flex flex-col items-center justify-center p-3.5">
+                <input type="radio" name="class-days" value="Alternate Days (Mon, Wed, Fri)"
+                  class="accent-rose-600 mb-1.5">
+                <span class="text-xl mb-1">🗓️</span>
+                <span class="font-extrabold text-xs text-slate-900">Alternate Days</span>
+                <span class="text-[11px] font-bold text-rose-700">மாற்று நாட்கள்</span>
+                <span class="text-[10px] text-slate-500 mt-0.5">Mon, Wed, Fri (திங்கள், புதன், வெள்ளி)</span>
+              </label>
+
+              <label class="custom-option-card text-center flex flex-col items-center justify-center p-3.5">
+                <input type="radio" name="class-days" value="Flexible Days (Any day)" class="accent-rose-600 mb-1.5">
+                <span class="text-xl mb-1">✨</span>
+                <span class="font-extrabold text-xs text-slate-900">Flexible Days</span>
+                <span class="text-[11px] font-bold text-rose-700">நெகிழ்வான நாட்கள்</span>
+                <span class="text-[10px] text-slate-500 mt-0.5">Any day based on free time</span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- 3. CLASS TIME SLOT OPTIONS -->
+          <div class="space-y-3 pt-2">
+            <label class="form-label">
+              Preferred Time Slot <span class="ta">/ பயிற்சி நேரம்</span> <span class="text-rose-500">*</span>
+            </label>
+            <p class="text-xs text-slate-500 -mt-2">Choose the best time slot that suits your household activities:</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+
+              <label class="custom-option-card text-center flex flex-col items-center justify-center p-3.5">
+                <input type="radio" name="class-time" value="Morning: 10:00 AM – 12:30 PM"
+                  class="accent-rose-600 mb-1.5" checked>
+                <span class="text-xl mb-1">🌅</span>
+                <span class="font-extrabold text-xs text-slate-900">Morning Batch</span>
+                <span class="text-[11px] font-bold text-rose-700">காலை அமர்வு</span>
+                <span class="text-[11px] font-black text-slate-700 mt-0.5">10:00 AM – 12:30 PM</span>
+                <span class="text-[10px] text-slate-400">Convenient for homemakers</span>
+              </label>
+
+              <label class="custom-option-card text-center flex flex-col items-center justify-center p-3.5">
+                <input type="radio" name="class-time" value="Afternoon: 2:00 PM – 4:30 PM"
+                  class="accent-rose-600 mb-1.5">
+                <span class="text-xl mb-1">☀️</span>
+                <span class="font-extrabold text-xs text-slate-900">Afternoon Batch</span>
+                <span class="text-[11px] font-bold text-rose-700">மதிய அமர்வு</span>
+                <span class="text-[11px] font-black text-slate-700 mt-0.5">2:00 PM – 4:30 PM</span>
+                <span class="text-[10px] text-slate-400">Quiet afternoon hours</span>
+              </label>
+
+              <label class="custom-option-card text-center flex flex-col items-center justify-center p-3.5">
+                <input type="radio" name="class-time" value="Evening: 5:00 PM – 7:00 PM" class="accent-rose-600 mb-1.5">
+                <span class="text-xl mb-1">🌆</span>
+                <span class="font-extrabold text-xs text-slate-900">Evening Batch</span>
+                <span class="text-[11px] font-bold text-rose-700">மாலை அமர்வு</span>
+                <span class="text-[11px] font-black text-slate-700 mt-0.5">5:00 PM – 7:00 PM</span>
+                <span class="text-[10px] text-slate-400">After work / school hours</span>
+              </label>
+
+              <label class="custom-option-card text-center flex flex-col items-center justify-center p-3.5">
+                <input type="radio" name="class-time" value="Flexible / Self-Paced" class="accent-rose-600 mb-1.5">
+                <span class="text-xl mb-1">⏰</span>
+                <span class="font-extrabold text-xs text-slate-900">Flexible Time</span>
+                <span class="text-[11px] font-bold text-rose-700">நெகிழ்வான நேரம்</span>
+                <span class="text-[11px] font-black text-slate-700 mt-0.5">Self-Paced</span>
+                <span class="text-[10px] text-slate-400">Mentor calls on your free time</span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- 4. TRUST HELP & SUPPORT NEEDED -->
+          <div class="pt-4 border-t border-rose-100 space-y-3">
+            <div
+              class="bg-gradient-to-r from-amber-50 via-rose-50 to-pink-50 border-2 border-rose-200 rounded-2xl p-4.5">
+              <div class="flex items-center gap-2.5 mb-1">
+                <span class="text-2xl">🤝</span>
+                <h4 class="font-extrabold text-sm sm:text-base text-rose-950">
+                  What Help Do You Need From Thulasi Trust?
+                </h4>
+              </div>
+              <p class="text-xs font-bold text-rose-700">
+                தூலாசி அறக்கட்டளையிடம் இருந்து உங்களுக்கு என்ன உதவி தேவை?
+              </p>
+              <p class="text-xs text-slate-600 mt-1">
+                Thulasi Trust will help you with whatever you need to succeed — from free training and tools to loan
+                guidance and selling your products! Select all that apply:
+              </p>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                பயிற்சி, கருவிகள், கடன் உதவி முதல் விற்பனை வரை உங்களுக்கு தேவையான அனைத்து உதவிகளையும் தூலாசி அறக்கட்டளை
+                செய்து தரும்:
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" name="trust-support"
+                  value="Free Sewing Machine / Craft Equipment Support (இலவச தையல் மெஷின் / கருவிகள்)"
+                  class="support-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div>
+                  <div class="font-extrabold text-xs text-slate-900">🧵 Free Sewing Machine / Tools Support</div>
+                  <div class="text-[11px] font-bold text-rose-700">இலவச தையல் இயந்திரம் / தொழில் கருவிகள் உதவி</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">Machines, moulds, framing stands & basic work tools
+                  </div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" name="trust-support"
+                  value="Free Raw Materials & Production Kits (இலவச மூலப்பொருட்கள்)"
+                  class="support-checkbox mt-1 w-4 h-4 accent-rose-600 rounded" checked>
+                <div>
+                  <div class="font-extrabold text-xs text-slate-900">📦 Free Raw Materials & Starter Kits</div>
+                  <div class="text-[11px] font-bold text-rose-700">இலவச மூலப்பொருட்கள் & தயாரிப்பு கிட்</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">Cloth, threads, beads, clay, wax & farming spawns</div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" name="trust-support"
+                  value="SHG Micro-Loan & Financial Assistance (மகளிர் குழு சிறு கடன் / நிதி உதவி)"
+                  class="support-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div>
+                  <div class="font-extrabold text-xs text-slate-900">💰 SHG Micro-Loan & Financial Aid</div>
+                  <div class="text-[11px] font-bold text-rose-700">மகளிர் குழு சிறு கடன் / வங்கி நிதி உதவி</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">Low-interest bank loan linkages & subsidy assistance
+                  </div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" name="trust-support"
+                  value="Marketplace & Sales Support to Sell Products (பொருட்களை விற்க சந்தை வாய்ப்பு)"
+                  class="support-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div>
+                  <div class="font-extrabold text-xs text-slate-900">🛍️ Marketplace & Selling Support</div>
+                  <div class="text-[11px] font-bold text-rose-700">பொருட்களை விற்க சந்தை வாய்ப்பு & கண்காட்சி</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">Helping you sell finished crafts in exhibitions &
+                    portal</div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" name="trust-support"
+                  value="Work-From-Home Job Orders / Bulk Stitching Orders (வீட்டிலிருந்தே ஆர்டர்கள்)"
+                  class="support-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div>
+                  <div class="font-extrabold text-xs text-slate-900">🏠 Work-From-Home Job Orders</div>
+                  <div class="text-[11px] font-bold text-rose-700">வீட்டிலிருந்தே வருமானம் ஈட்ட ஆர்டர்கள்</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">Bulk stitching, garland making & packaging job work
+                  </div>
+                </div>
+              </label>
+
+              <label class="custom-option-card flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" name="trust-support"
+                  value="Govt Welfare Schemes & Subsidies (அரசு மானியங்கள் & திட்டங்கள்)"
+                  class="support-checkbox mt-1 w-4 h-4 accent-rose-600 rounded">
+                <div>
+                  <div class="font-extrabold text-xs text-slate-900">📜 Govt Schemes & Subsidies Guidance</div>
+                  <div class="text-[11px] font-bold text-rose-700">அரசு மானியங்கள் & மகளிர் நலத்திட்ட வழிகாட்டுதல்</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">Tamil Nadu Govt Mahalir Thittam & MSME schemes</div>
+                </div>
+              </label>
+
+            </div>
+
+            <!-- Other Support text input -->
+            <div class="custom-option-card mt-2">
+              <label class="block text-xs font-bold text-slate-800 mb-1" for="f-other-support">
+                ✨ Any Other Specific Help or Support You Need? <span class="text-rose-700">/ வேறு ஏதேனும் குறிப்பிட்ட
+                  உதவி தேவையா?</span>
+              </label>
+              <input type="text" id="f-other-support" class="form-input text-xs"
+                placeholder="e.g. Need help with transport, group formation, child-care timings...">
+            </div>
+          </div>
+
+          <!-- 5. ADDITIONAL BACKGROUND DETAILS -->
+          <div class="pt-4 border-t border-rose-100 space-y-4">
+            <h4 class="font-extrabold text-sm text-slate-800">
+              Additional Details <span class="text-rose-700 font-bold">/ கூடுதல் விவரங்கள்</span>
+            </h4>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <div>
+                <label class="form-label" for="f-education">
+                  Education Qualification <span class="ta">/ கல்வித் தகுதி</span>
+                </label>
+                <select id="f-education" class="form-input select-input">
+                  <option value="Not Specified">-- Select / தேர்வு செய்க --</option>
+                  <option value="Primary (Up to 5th Std)">Primary / ஆரம்ப கல்வி (5ஆம் வகுப்பு வரை)</option>
+                  <option value="Secondary (10th Std)">Secondary / 10ஆம் வகுப்பு (எஸ்.எஸ்.எல்.சி)</option>
+                  <option value="Higher Secondary (12th Std)">Higher Secondary / 12ஆம் வகுப்பு (+2)</option>
+                  <option value="Graduate (Degree)">Graduate / பட்டதாரி (BA / B.Sc / B.Com)</option>
+                  <option value="Post Graduate & Above">Post Graduate / முதுகலை பட்டம்</option>
+                  <option value="No Formal Schooling">No Formal Schooling / பள்ளி செல்லவில்லை</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="form-label">
+                  Are you a Self Help Group (SHG) Member? <span class="ta">/ மகளிர் குழு உறுப்பினரா?</span>
+                </label>
+                <div class="flex gap-3 mt-1.5">
+                  <label
+                    class="custom-option-card py-2.5 px-4 flex items-center gap-2 flex-1 justify-center text-xs font-bold">
+                    <input type="radio" name="shg-member" value="Yes" class="accent-rose-600">
+                    <span>✅ Yes / ஆம்</span>
+                  </label>
+                  <label
+                    class="custom-option-card py-2.5 px-4 flex items-center gap-2 flex-1 justify-center text-xs font-bold">
+                    <input type="radio" name="shg-member" value="No" class="accent-rose-600" checked>
+                    <span>❌ No / இல்லை</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="form-label" for="f-shg-name">
+                  SHG Group Name <span class="ta">/ மகளிர் குழு பெயர்</span>
+                  <span class="text-slate-400 font-normal">(If member)</span>
+                </label>
+                <input type="text" id="f-shg-name" class="form-input" placeholder="e.g. Annai Teresa Magalir Kuzhu">
+              </div>
+
+              <div>
+                <label class="form-label">
+                  Do you have a Smartphone with WhatsApp? <span class="ta">/ ஸ்மார்ட்போன் உள்ளதா?</span>
+                </label>
+                <div class="flex gap-3 mt-1.5">
+                  <label
+                    class="custom-option-card py-2.5 px-4 flex items-center gap-2 flex-1 justify-center text-xs font-bold">
+                    <input type="radio" name="smartphone" value="Yes" class="accent-rose-600" checked>
+                    <span>📱 Yes / ஆம்</span>
+                  </label>
+                  <label
+                    class="custom-option-card py-2.5 px-4 flex items-center gap-2 flex-1 justify-center text-xs font-bold">
+                    <input type="radio" name="smartphone" value="No" class="accent-rose-600">
+                    <span>No / இல்லை</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <div>
+              <label class="form-label" for="f-experience">
+                Any Prior Craft Experience or Questions? <span class="ta">/ முன் அனுபவம் அல்லது குறிப்புகள்</span>
+                <span class="text-slate-400 font-normal">(Optional)</span>
+              </label>
+              <textarea id="f-experience" class="form-input" rows="2"
+                placeholder="e.g. I already know basic tailoring and want to learn Aari work..."></textarea>
+            </div>
+          </div>
+
+          <!-- Free Disclaimer Badge -->
+          <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">🎉</span>
+              <div>
+                <div class="text-xs font-extrabold text-emerald-900">Total Admission & Training Fee: ₹0 (100% Free For
+                  All)</div>
+                <div class="text-[11px] text-emerald-700 font-medium">பயிற்சி கட்டணம்: ₹0 (முற்றிலும் இலவசம் — தூலாசி
+                  அறக்கட்டளை)</div>
+              </div>
+            </div>
+            <span
+              class="px-3 py-1 bg-emerald-600 text-white font-extrabold text-xs rounded-lg shadow-sm whitespace-nowrap">
+              FREE PASS
+            </span>
+          </div>
+
+          <!-- Step 3 Action Buttons -->
+          <div class="pt-4 border-t border-rose-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <button type="button" class="btn-secondary btn-prev-step w-full sm:w-auto" data-from="3">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              <span>Back / பின்செல்</span>
+            </button>
+
+            <button type="submit" class="btn-primary w-full sm:w-auto px-10 text-base shadow-xl">
+              <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+              <span>Complete Free Registration / பதிவு செய்க</span>
+            </button>
+          </div>
+
+          <p class="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1.5">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+            <span>Your information is protected and used solely by Thulasi Trust for scheduling your free craft
+              training.</span>
+          </p>
+
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ======================================== -->
+  <!-- 3. THANK YOU / CONFIRMATION SLIP SECTION -->
+  <!-- ======================================== -->
+  <section id="thankyou-screen" class="hidden max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    <div class="glass-card rounded-3xl border-2 border-emerald-300 shadow-2xl overflow-hidden relative">
+
+      <!-- Top Rainbow Bar -->
+      <div class="bg-gradient-to-r from-emerald-500 via-teal-500 to-rose-500 h-3"></div>
+
+      <div class="p-8 sm:p-12 text-center space-y-6">
+
+        <!-- Confetti Emoji & Success Icon -->
+        <div class="relative inline-block">
+          <div
+            class="w-24 h-24 mx-auto rounded-3xl bg-emerald-100 border-4 border-emerald-300 flex items-center justify-center text-5xl shadow-lg shadow-emerald-100">
+            🎉
+          </div>
+          <div
+            class="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-md">
+            <i data-lucide="check" class="w-5 h-5 stroke-[3]"></i>
+          </div>
+        </div>
+
+        <div>
+          <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold mb-2">
+            ✅ Registration Confirmed / பதிவு உறுதியானது
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-heading">
+            Congratulations! Registration Successful
+          </h2>
+          <p class="text-sm sm:text-base text-rose-700 font-bold mt-1">
+            வாழ்த்துகள்! தூலாசி அறக்கட்டளை இலவச கைவினைப் பயிற்சி பதிவு வெற்றிகரமாக முடிந்தது!
+          </p>
+        </div>
+
+        <!-- Registration Slip Card (Printable) -->
+        <div
+          class="bg-white border-2 border-emerald-200 rounded-2xl p-6 text-left space-y-4 shadow-sm relative overflow-hidden">
+          <div
+            class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-black px-4 py-1 rounded-bl-xl uppercase tracking-wider">
+            Official Pass • ₹0 Free
+          </div>
+
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div>
+              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Registration Number</div>
+              <div id="ty-id" class="font-mono text-base sm:text-lg font-black text-emerald-800">TT-2026-XXXX</div>
+            </div>
+            <div class="text-right">
+              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Course Fee</div>
+              <div class="text-sm font-black text-emerald-700">₹0 (100% FREE)</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <span class="text-slate-400 font-semibold block">Artisan Name / பெயர்:</span>
+              <span id="ty-name" class="font-extrabold text-slate-900 text-sm">—</span>
+            </div>
+            <div>
+              <span class="text-slate-400 font-semibold block">Contact Number / செல்போன்:</span>
+              <span id="ty-phone" class="font-extrabold text-slate-900 text-sm">—</span>
+            </div>
+            <div class="sm:col-span-2">
+              <span class="text-slate-400 font-semibold block">Selected Handicraft(s) / தேர்ந்தெடுக்கப்பட்ட
+                கைவினைகள்:</span>
+              <div id="ty-crafts" class="font-extrabold text-slate-900 text-xs sm:text-sm mt-0.5 leading-relaxed">—
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <span class="text-slate-400 font-semibold block">Support Requested From Trust / அறக்கட்டளையின்
+                உதவி:</span>
+              <div id="ty-support" class="font-extrabold text-emerald-800 text-xs sm:text-sm mt-0.5 leading-relaxed">—
+              </div>
+            </div>
+            <div>
+              <span class="text-slate-400 font-semibold block">Training Venue / பயிற்சி மையம்:</span>
+              <span id="ty-venue" class="font-extrabold text-slate-900 text-xs sm:text-sm mt-0.5 block">—</span>
+            </div>
+            <div>
+              <span class="text-slate-400 font-semibold block">Selected Days & Time / நாட்கள் & நேரம்:</span>
+              <div class="mt-0.5">
+                <span id="ty-days" class="font-extrabold text-slate-900 block">—</span>
+                <span id="ty-time" class="font-semibold text-rose-700 block text-[11px]">—</span>
+              </div>
+            </div>
+            <div>
+              <span class="text-slate-400 font-semibold block">Area / இருப்பிடம்:</span>
+              <span id="ty-area" class="font-extrabold text-slate-800">—</span>
+            </div>
+            <div>
+              <span class="text-slate-400 font-semibold block">Training Mode:</span>
+              <span id="ty-mode" class="font-extrabold text-slate-800">—</span>
+            </div>
+          </div>
+
+          <div
+            class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-emerald-700 font-bold">
+            <span>🎁 Free Starter Materials Included</span>
+            <span>📜 Skill Certificate Included</span>
+          </div>
+        </div>
+
+        <!-- Next Steps Instruction -->
+        <div class="bg-rose-50 border border-rose-200 rounded-2xl p-4 text-xs text-left space-y-2">
+          <div class="font-extrabold text-rose-900 flex items-center gap-1.5">
+            <i data-lucide="bell" class="w-4 h-4 text-rose-600"></i>
+            <span>Next Steps / அடுத்தகட்ட தகவல்:</span>
+          </div>
+          <p class="text-slate-700">
+            Thulasi Trust volunteers will call or WhatsApp you on your registered number to confirm your batch starting
+            date and venue directions. Please bring your Aadhaar card copy during the first class.
+          </p>
+          <p class="text-rose-800 font-medium">
+            தூலாசி அறக்கட்டளை ஒருங்கிணைப்பாளர்கள் உங்கள் செல்போனில் தொடர்பு கொண்டு வகுப்பு தொடங்கும் தேதியை
+            அறிவிப்பார்கள்.
+          </p>
+        </div>
+
+        <!-- Action Buttons: Print, WhatsApp Share, Register Another -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2 no-print">
+          <button type="button" onclick="ThulasiSurvey.printSlip()" class="btn-primary">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+            <span>Print / Save Slip (அச்சிடு)</span>
+          </button>
+
+          <button type="button" onclick="ThulasiSurvey.shareOnWhatsApp()" class="btn-secondary">
+            <i data-lucide="share-2" class="w-4 h-4"></i>
+            <span>Share on WhatsApp</span>
+          </button>
+
+          <a href="survey-thulasi.html"
+            class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-100 transition">
+            <i data-lucide="user-plus" class="w-4 h-4"></i>
+            <span>Register Another Woman</span>
+          </a>
+        </div>
+
+        <!-- Helpline -->
+        <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 space-y-1">
+          <div class="font-extrabold text-slate-700">📞 Thulasi Trust Contact & Helpline / தொடர்பு</div>
+          <div>Women Helpline: <strong class="text-rose-700">181</strong> | Thoothukudi Trust Office:
+            <strong>Palayamkottai Road, Thoothukudi</strong></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================== -->
+  <!-- FOOTER                                   -->
+  <!-- ======================================== -->
+  <footer
+    class="bg-white/80 backdrop-blur-md border-t border-rose-100 py-10 mt-12 text-center text-xs text-slate-600 relative z-10">
+    <div class="max-w-5xl mx-auto px-4 space-y-3">
+      <div class="flex items-center justify-center gap-2 text-rose-900 font-extrabold text-sm font-heading">
+        <i data-lucide="heart" class="w-4 h-4 text-rose-600 fill-rose-600"></i>
+        <span>Thulasi Trust × Women's Empowerment Platform</span>
+      </div>
+      <p class="text-slate-500 max-w-2xl mx-auto">
+        Empowering rural women and SHG artisans across Thoothukudi district through free skill classes, material kits,
+        and entrepreneurship development.
+      </p>
+      <div class="flex items-center justify-center gap-2 text-rose-700 font-bold pt-1">
+        <i data-lucide="map-pin" class="w-4 h-4"></i>
+        <span>Thoothukudi, Tiruchendur, Kovilpatti, Vilathikulam — Tamil Nadu, India</span>
+      </div>
+      <p class="text-[11px] text-slate-400 pt-2">
+        © 2026 Women's Empowerment Platform • Free Community Initiative in Collaboration with Thulasi Trust.
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script src="js/thulasi-survey.js"></script>
+  <script>
+    // Initialize Lucide icons
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+
+</body>
+
+</html>
